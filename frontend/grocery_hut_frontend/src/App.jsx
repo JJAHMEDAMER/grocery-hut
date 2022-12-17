@@ -15,27 +15,8 @@ import ControllerBar from "./comp/controller";
 //   }
 // }
 
-const fakeData = [
-  {
-    id: 1,
-    title: "Go to Market",
-  },
-  {
-    id: 2,
-    title: "Study",
-  },
-  {
-    id: 3,
-    title: "Sammy's books",
-  },
-  {
-    id: 4,
-    title: "Article",
-  },
-];
-
 function App() {
-  const [appList, setAppList] = React.useState(fakeData);
+  const [appList, setAppList] = React.useState([]);
   const [editIndex, setEditIndex] = React.useState(-1);
 
   async function getData() {
@@ -51,10 +32,17 @@ function App() {
 
   let inputValue;
 
-  function add() {
-    const id = appList[appList.length - 1].id + 1
-    const newItem = { id: id, title: inputValue }
-    setAppList([...appList, newItem]);
+  async function add() {
+    const res = await fetch('http://127.0.0.1:8000/api/grocery/', {
+      method: 'Post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: inputValue
+      })
+    })
+    getData();
   }
 
   function editButton(itemIndex) {
