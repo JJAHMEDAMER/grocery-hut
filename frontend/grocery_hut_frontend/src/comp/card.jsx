@@ -31,10 +31,10 @@ const Card = ({
       <h1 className="item--number"># of Items:: {appList.length}</h1>
       <div className="card">
         {appList.map((item, index) => (
-          <div>
+          <div key={item.id}>
             <div className="item--section">
               <p className="item--name">
-                <span className="item--index">{index + 1}.</span> {item}
+                <span className="item--index">{index + 1}.</span> {item.title}
               </p>
               <div>
                 <img

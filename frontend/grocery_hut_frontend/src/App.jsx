@@ -6,22 +6,42 @@ import Card from "./comp/card";
 import ControllerBar from "./comp/controller";
 
 
-function getLocalStorage() {
-  const data = localStorage.getItem("appList");
-  if (data) {
-    return JSON.parse(data);
-  } else {
-    return [];
-  }
-}
+// function getLocalStorage() {
+//   const data = localStorage.getItem("appList");
+//   if (data) {
+//     return JSON.parse(data);
+//   } else {
+//     return [];
+//   }
+// }
+
+const fakeData = [
+  {
+    id: 1,
+    title: "Go to Market",
+  },
+  {
+    id: 2,
+    title: "Study",
+  },
+  {
+    id: 3,
+    title: "Sammy's books",
+  },
+  {
+    id: 4,
+    title: "Article",
+  },
+];
 
 function App() {
-  const [appList, setAppList] = React.useState(getLocalStorage);
+  const [appList, setAppList] = React.useState(fakeData);
   const [editIndex, setEditIndex] = React.useState(-1);
 
-  React.useEffect(() => {
-    localStorage.setItem("appList", JSON.stringify(appList));
-  }, [appList]);
+  // console.log(getLocalStorage())
+  // React.useEffect(() => {
+  //   localStorage.setItem("appList", JSON.stringify(appList));
+  // }, [appList]);
 
   function add() {
     setAppList([...appList, inputValue]);
@@ -47,7 +67,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="app--title">Grocery List</h1>
+      <h1 className="app--title">Grocery Hub</h1>
       <ControllerBar onClickHandler={add} onChangeHandler={getInput} />
       {!(appList.length === 0) && (
         <Card
