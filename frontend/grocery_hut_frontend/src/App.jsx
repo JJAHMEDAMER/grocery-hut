@@ -17,7 +17,6 @@ import ControllerBar from "./comp/controller";
 
 function App() {
   const [appList, setAppList] = React.useState([]);
-  const [editIndex, setEditIndex] = React.useState(-1);
 
   async function getData() {
     const res = await fetch('http://127.0.0.1:8000/api/grocery/')
@@ -45,12 +44,10 @@ function App() {
     getData();
   }
 
-  function editButton(itemIndex) {
-    if (itemIndex === editIndex) {
-      setEditIndex(-1);
-    } else {
-      setEditIndex(itemIndex);
-    }
+  function edit(index, editValue) {
+    let newList = [...appList];
+    newList[index].title = editValue;
+    setAppList(newList);
   }
 
   async function deleteButton(id) {
@@ -70,9 +67,8 @@ function App() {
       {!(appList.length === 0) ? (
         <Card
           appList={appList}
-          onClickEdit={editButton}
           onClickDelete={deleteButton}
-          editIndex={editIndex}
+          editHandler={edit}
           setAppList={setAppList}
         />
       ) : null}

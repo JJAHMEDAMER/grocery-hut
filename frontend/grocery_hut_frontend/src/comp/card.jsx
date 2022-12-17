@@ -11,16 +11,17 @@ const Card = ({
   appList,
   onClickDelete,
   onClickEdit,
-  editIndex,
-  setAppList,
+  editHandler,
 }) => {
+  let editValue
+  const [editIndex, setEditIndex] = React.useState(-1);
 
-  let editValue;
-
-  function edit(index) {
-    let newList = [...appList];
-    newList[index].title = editValue;
-    setAppList(newList);
+  function editButton(itemIndex) {
+    if (itemIndex === editIndex) {
+      setEditIndex(-1);
+    } else {
+      setEditIndex(itemIndex);
+    }
   }
 
   return (
@@ -38,7 +39,7 @@ const Card = ({
                   src={pen}
                   className="item--img"
                   alt="edit"
-                  onClick={() => onClickEdit(index)}
+                  onClick={() => editButton(index)}
                 />
                 <img
                   src={trash}
@@ -50,7 +51,7 @@ const Card = ({
             </div>
             {index === editIndex ? (
               <EditSection
-                onClickHandler={() => edit(index)}
+                onClickHandler={() => editHandler(index, editValue)}
                 onChangeHandler={(input) => editValue = input}
               />
             ) : null}
