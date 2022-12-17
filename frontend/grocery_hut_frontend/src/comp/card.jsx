@@ -51,7 +51,7 @@ const Card = ({
             </div>
             {index === editIndex ? (
               <EditSection
-                onClickHandler={() => editHandler(index, editValue)}
+                onClickHandler={() => editHandler(item.id, editValue)}
                 onChangeHandler={(input) => editValue = input}
               />
             ) : null}

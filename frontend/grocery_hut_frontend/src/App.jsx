@@ -44,10 +44,17 @@ function App() {
     getData();
   }
 
-  function edit(index, editValue) {
-    let newList = [...appList];
-    newList[index].title = editValue;
-    setAppList(newList);
+  async function edit(id, editValue) {
+    await fetch(`http://127.0.0.1:8000/api/grocery/${id}/`, {
+      method: 'Put',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: editValue
+      })
+    })
+    getData();
   }
 
   async function deleteButton(id) {
