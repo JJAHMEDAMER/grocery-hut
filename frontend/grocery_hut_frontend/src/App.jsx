@@ -42,14 +42,13 @@ function App() {
   // React.useEffect(() => {
   //   localStorage.setItem("appList", JSON.stringify(appList));
   // }, [appList]);
+  
+  let inputValue;
 
   function add() {
-    setAppList([...appList, inputValue]);
-  }
-
-  let inputValue;
-  function getInput(changedValue) {
-    inputValue = changedValue;
+    const id = appList[appList.length - 1].id + 1
+    const newItem = { id: id, title: inputValue }
+    setAppList([...appList, newItem]);
   }
 
   function editButton(itemIndex) {
@@ -68,7 +67,7 @@ function App() {
   return (
     <div className="app">
       <h1 className="app--title">Grocery Hub</h1>
-      <ControllerBar onClickHandler={add} onChangeHandler={getInput} />
+      <ControllerBar onClickHandler={add} onChangeHandler={(input) => inputValue = input} />
       {!(appList.length === 0) && (
         <Card
           appList={appList}
