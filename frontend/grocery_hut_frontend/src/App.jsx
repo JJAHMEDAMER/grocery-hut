@@ -53,9 +53,14 @@ function App() {
     }
   }
 
-  function deleteButton(itemIndex) {
-    let newList = appList.filter((item, index) => index !== itemIndex);
-    setAppList(newList);
+  async function deleteButton(id) {
+    await fetch(`http://127.0.0.1:8000/api/grocery/${id}/`, {
+      method: 'Delete',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    getData();
   }
 
   return (

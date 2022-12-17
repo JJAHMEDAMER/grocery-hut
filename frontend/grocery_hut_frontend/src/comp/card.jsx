@@ -44,7 +44,7 @@ const Card = ({
                   src={trash}
                   className="item--img"
                   alt="delete"
-                  onClick={() => onClickDelete(index)}
+                  onClick={() => onClickDelete(item.id)}
                 />
               </div>
             </div>
