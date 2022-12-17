@@ -38,10 +38,16 @@ function App() {
   const [appList, setAppList] = React.useState(fakeData);
   const [editIndex, setEditIndex] = React.useState(-1);
 
-  // console.log(getLocalStorage())
-  // React.useEffect(() => {
-  //   localStorage.setItem("appList", JSON.stringify(appList));
-  // }, [appList]);
+  async function getData() {
+    const res = await fetch('http://127.0.0.1:8000/api/grocery/')
+    const resJson = await res.json()
+    setAppList(resJson)
+    console.log(resJson)
+  }
+
+  React.useEffect(() => {
+    getData()
+  }, []);
 
   let inputValue;
 
