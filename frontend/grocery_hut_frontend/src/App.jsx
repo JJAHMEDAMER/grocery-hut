@@ -1,34 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React from "react";
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+// Comp
+import Card from "./comp/card";
+import ControllerBar from "./comp/controller";
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+
+function getLocalStorage() {
+  const data = localStorage.getItem("appList");
+  if (data) {
+    return JSON.parse(data);
+  } else {
+    return [];
+  }
 }
 
-export default App
+function App() {
+  const [appList, setAppList] = React.useState(getLocalStorage);
+  const [editIndex, setEditIndex] = React.useState(-1);
+
+  React.useEffect(() => {
+    localStorage.setItem("appList", JSON.stringify(appList));
+  }, [appList]);
+
+  function add() {
+    setAppList([...appList, inputValue]);
+  }
+
+  let inputValue;
+  function getInput(changedValue) {
+    inputValue = changedValue;
+  }
+
+  function editButton(itemIndex) {
+    if (itemIndex === editIndex) {
+      setEditIndex(-1);
+    } else {
+      setEditIndex(itemIndex);
+    }
+  }
+
+  function deleteButton(itemIndex) {
+    let newList = appList.filter((item, index) => index !== itemIndex);
+    setAppList(newList);
+  }
+
+  return (
+    <div className="app">
+      <h1 className="app--title">Grocery List</h1>
+      <ControllerBar onClickHandler={add} onChangeHandler={getInput} />
+      {!(appList.length === 0) && (
+        <Card
+          appList={appList}
+          onClickEdit={editButton}
+          onClickDelete={deleteButton}
+          editIndex={editIndex}
+          setAppList={setAppList}
+        />
+      )}
+    </div>
+  );
+}
+
+export default App;
+
