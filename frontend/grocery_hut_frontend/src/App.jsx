@@ -33,7 +33,7 @@ function App() {
   let inputValue;
 
   async function add() {
-    const res = await fetch('http://127.0.0.1:8000/api/grocery/', {
+    await fetch('http://127.0.0.1:8000/api/grocery/', {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json'
