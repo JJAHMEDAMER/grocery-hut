@@ -22,7 +22,6 @@ function App() {
     const res = await fetch('http://127.0.0.1:8000/api/grocery/')
     const resJson = await res.json()
     setAppList(resJson)
-    console.log(resJson)
   }
 
   React.useEffect(() => {
