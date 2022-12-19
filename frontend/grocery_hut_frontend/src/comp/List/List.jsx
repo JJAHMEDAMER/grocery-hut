@@ -1,20 +1,20 @@
-import React from "react";
-
-//assets
-import trash from "../assets/trash.png";
-import pen from "../assets/pen.png";
+// React 
+import { useState } from "react";
 
 //comp
-import EditSection from "./editSection";
+import EditSection from "../editSection";
 
-const Card = ({
+//assets
+import trash from "../../assets/trash.png";
+import pen from "../../assets/pen.png";
+
+export const List = ({
   appList,
   onClickDelete,
-  onClickEdit,
   editHandler,
 }) => {
   let editValue
-  const [editIndex, setEditIndex] = React.useState(-1);
+  const [editIndex, setEditIndex] = useState(-1);
 
   function editButton(itemIndex) {
     if (itemIndex === editIndex) {
@@ -62,5 +62,3 @@ const Card = ({
     </div>
   );
 };
-
-export default Card;

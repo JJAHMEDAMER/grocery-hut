@@ -1,10 +1,8 @@
-import React from "react";
+import {useState, useEffect} from "react";
 import './App.css'
 
 // Comp
-import Card from "./comp/card";
-import ControllerBar from "./comp/controller";
-
+import { AddItemBar, List } from "./comp";
 
 // function getLocalStorage() {
 //   const data = localStorage.getItem("appList");
@@ -16,7 +14,7 @@ import ControllerBar from "./comp/controller";
 // }
 
 function App() {
-  const [appList, setAppList] = React.useState([]);
+  const [appList, setAppList] = useState([]);
 
   async function getData() {
     const res = await fetch('http://127.0.0.1:8000/api/grocery/')
@@ -24,7 +22,7 @@ function App() {
     setAppList(resJson)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     getData()
   }, []);
 
@@ -69,13 +67,12 @@ function App() {
   return (
     <div className="app">
       <h1 className="app--title">Grocery Hub</h1>
-      <ControllerBar onClickHandler={add} onChangeHandler={(input) => inputValue = input} />
+      <AddItemBar onClickHandler={add} onChangeHandler={(input) => inputValue = input} />
       {!(appList.length === 0) ? (
-        <Card
+        <List
           appList={appList}
           onClickDelete={deleteButton}
           editHandler={edit}
-          setAppList={setAppList}
         />
       ) : null}
     </div>
