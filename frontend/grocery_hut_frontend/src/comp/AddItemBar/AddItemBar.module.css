@@ -1,0 +1,38 @@
+.control {
+    width: 35rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    background-color: var(--card-bg);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    color: var(--white);
+}
+
+.text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+.input {
+    min-width: 7rem;
+    padding: 0.2rem 1rem;
+    border-radius: 1rem;
+    border-width: 0;
+    font-weight: 600;
+    text-align: center;
+}
+
+.input::placeholder {
+    text-align: center;
+    opacity: 0.5;
+}
+
+.button {
+    padding: 0.2rem 1rem;
+    border-radius: 1rem;
+    border-width: 0;
+    font-weight: 600;
+}

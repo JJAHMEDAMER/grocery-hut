@@ -2,7 +2,10 @@
 import { useState } from "react";
 
 //comp
-import EditSection from "../editSection";
+import { AddItemBar } from "../";
+
+// Styles
+import styles from "./List.module.css";
 
 //assets
 import trash from "../../assets/trash.png";
@@ -26,31 +29,32 @@ export const List = ({
 
   return (
     <div className="item">
-      <h1 className="item--number"># of Items:: {appList.length}</h1>
+      <h1 className={styles.item_number}># of Items:: {appList.length}</h1>
       <div className="card">
         {appList.map((item, index) => (
           <div key={item.id}>
-            <div className="item--section">
-              <p className="item--name">
-                <span className="item--index">{index + 1}.</span> {item.title}
+            <div className={styles.section}>
+              <p className={styles.name}>
+                <span className={styles.index}>{index + 1}.</span> {item.title}
               </p>
               <div>
                 <img
                   src={pen}
-                  className="item--img"
+                  className={styles.img}
                   alt="edit"
                   onClick={() => editButton(index)}
                 />
                 <img
                   src={trash}
-                  className="item--img"
+                  className={styles.img}
                   alt="delete"
                   onClick={() => onClickDelete(item.id)}
                 />
               </div>
             </div>
             {index === editIndex ? (
-              <EditSection
+              <AddItemBar
+                isEdit={true}
                 onClickHandler={() => editHandler(item.id, editValue)}
                 onChangeHandler={(input) => editValue = input}
               />
