@@ -66,7 +66,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="app--title">Grocery Hub</h1>
+      <h1 className="app--title">Grocery Hut</h1>
       <AddItemBar onClickHandler={add} onChangeHandler={(input) => inputValue = input} />
       {!(appList.length === 0) ? (
         <List

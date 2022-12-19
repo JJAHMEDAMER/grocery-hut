@@ -28,7 +28,7 @@ export const List = ({
   }
 
   return (
-    <div className="item">
+    <div className={styles.item}>
       <h1 className={styles.item_number}># of Items:: {appList.length}</h1>
       <div className="card">
         {appList.map((item, index) => (

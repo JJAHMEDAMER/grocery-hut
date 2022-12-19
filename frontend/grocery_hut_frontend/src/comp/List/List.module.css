@@ -1,3 +1,7 @@
+.item{
+    width: 100%;
+}
+
 .item_number {
     font-size: 1.2rem;
     margin-left: 1rem;
