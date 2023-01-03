@@ -1,0 +1,39 @@
+.control {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    color: var(--white);
+    background-color: var(--card-bg); 
+}
+
+.text {
+    min-width: fit-content;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.input {
+    width: 90%;
+    padding: 0.2rem 1rem;
+    border-radius: 1rem;
+    border-width: 0;
+    font-weight: 600;;
+    text-align: center;
+}
+
+.input::placeholder {
+    text-align: center;
+    opacity: 0.5;
+}
+
+.button {
+    padding: 0.2rem 1rem;
+    border-radius: 1rem;
+    border-width: 0;
+    font-weight: 600;
+}
