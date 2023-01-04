@@ -14,16 +14,18 @@
     gap: 1rem;
     background-color: white;
 
-    padding: 6rem;
+    padding: 4rem;
     border-radius: 2rem;
 
     color: rgb(56, 56, 56);
+    width: 35%
 }
 
 .section {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+    width: 100%;
 }
 
 .label {
@@ -57,4 +59,20 @@
     border-radius: 100rem;
 
     align-self: flex-start;
+}
+
+@media screen and (max-width: 800px) {
+    .form{
+        padding: 2rem;
+        width: 75%
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .form{
+        padding: 2rem;
+        width: 90%
+    }
+
+
 }
