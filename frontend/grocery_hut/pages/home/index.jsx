@@ -1,8 +1,8 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import styles from './home.module.css'
 
 // Comp
-import { AddItemBar, List } from "../../comp";
+import { AddItemBar, List, Navbar } from "../../comp";
 
 // function getLocalStorage() {
 //   const data = localStorage.getItem("appList");
@@ -65,16 +65,20 @@ function App() {
   }
 
   return (
-    <div className={styles.app}>
-      <h1 className={styles.app_title}>Grocery Hut</h1>
-      <AddItemBar onClickHandler={add} onChangeHandler={(input) => inputValue = input} />
-      {!(appList.length === 0) ? (
-        <List
-          appList={appList}
-          onClickDelete={deleteButton}
-          editHandler={edit}
-        />
-      ) : null}
+    <div>
+      <Navbar />
+      <div className={styles.app_container}>
+        <div className={styles.app}>
+          <AddItemBar onClickHandler={add} onChangeHandler={(input) => inputValue = input} />
+          {!(appList.length === 0) ? (
+            <List
+              appList={appList}
+              onClickDelete={deleteButton}
+              editHandler={edit}
+            />
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 }

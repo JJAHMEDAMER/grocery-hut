@@ -1,0 +1,25 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+.app_title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.list>*:hover{
+    cursor: pointer;
+    color: rgb(244, 244, 244);
+}

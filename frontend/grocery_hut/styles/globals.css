@@ -1,5 +1,6 @@
 :root {
   --yellow: #FFDBA4;
+  --accent-color: #862c2c;
   --card-bg: rgba(0, 0, 0, 0.859);
   --white: #fff;
 }
@@ -18,11 +19,11 @@ body {
   background-color: var(--yellow);
 }
 
-#__next{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+ul {
+  list-style: none;
+}
+
+#__next {
   width: 100vw;
 }
 
