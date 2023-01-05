@@ -19,8 +19,8 @@ const login = () => {
         <Navbar />
         <div className={styles.form_container}>
             <form className={styles.form}>
-                <div className={styles.section}>
-                    <label htmlFor="email" className={styles.label}>Email/Username</label>
+                <label className={styles.label}>
+                    <p>Email/Username</p>
                     <input
                         className={styles.input}
                         type="email"
@@ -29,9 +29,9 @@ const login = () => {
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                     />
-                </div>
-                <div className={styles.section}>
-                    <label htmlFor="password" className={styles.label}>Password</label>
+                </label>
+                <label className={styles.label}>
+                    <p>Password</p>
                     <input
                         className={styles.input}
                         type="password"
@@ -40,7 +40,7 @@ const login = () => {
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                     />
-                </div>
+                </label>
 
                 <button className={styles.button} type="submit">LogIn</button>
                 <p className={styles.no_account}>Don't Have an account? <Link href="/signup">SignUp</Link></p>

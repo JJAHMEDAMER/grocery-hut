@@ -20,8 +20,8 @@ const signup = () => {
         <Navbar />
         <div className={styles.form_container}>
             <form className={styles.form}>
-                <div className={styles.section}>
-                    <label htmlFor="username" className={styles.label}>Username</label>
+                <label className={styles.label}>
+                    <p>Username</p>
                     <input
                         className={styles.input}
                         type="text"
@@ -30,9 +30,9 @@ const signup = () => {
                         value={username}  // ...force the input's value to match the state variable...
                         onChange={(event) => setUsername(event.target.value)}  // ... and update the state variable on any edits
                     />
-                </div>
-                <div className={styles.section}>
-                    <label htmlFor="email" className={styles.label}>Email</label>
+                </label>
+                <label className={styles.label}>
+                    <p>Email</p>
                     <input
                         className={styles.input}
                         type="email"
@@ -41,9 +41,9 @@ const signup = () => {
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                     />
-                </div>
-                <div className={styles.section}>
-                    <label htmlFor="password" className={styles.label}>Password</label>
+                </label>
+                <label className={styles.label}>
+                    <p>Password</p>
                     <input
                         className={styles.input}
                         type="password"
@@ -52,7 +52,7 @@ const signup = () => {
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                     />
-                </div>
+                </label>
                 <button className={styles.button} type="submit">Sign Up</button>
                 <p className={styles.no_account}>Already have an account? <Link href="/login">Login</Link></p>
             </form>

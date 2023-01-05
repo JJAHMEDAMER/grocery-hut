@@ -21,14 +21,14 @@
     width: 35%
 }
 
-.section {
+.label {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
     width: 100%;
 }
 
-.label {
+.label>p {
     font-weight: 600;
     margin-left: 0.5rem;
 }
