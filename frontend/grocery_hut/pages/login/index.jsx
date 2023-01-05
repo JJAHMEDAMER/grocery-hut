@@ -1,20 +1,45 @@
-import styles from "./login.module.css"
 import Link from "next/link"
+import { useState } from "react"
 
+
+//
+import styles from "./login.module.css"
 import { Navbar } from "../../comp"
 
 const login = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    console.log({
+        email,
+        password
+    })
+
     return <div>
-        <Navbar/>
+        <Navbar />
         <div className={styles.form_container}>
             <form className={styles.form}>
                 <div className={styles.section}>
                     <label htmlFor="email" className={styles.label}>Email/Username</label>
-                    <input className={styles.input} type="email" name="email" placeholder="Enter your email or username" />
+                    <input
+                        className={styles.input}
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
                 </div>
                 <div className={styles.section}>
                     <label htmlFor="password" className={styles.label}>Password</label>
-                    <input className={styles.input} type="password" name="password" placeholder="Enter your password" />
+                    <input
+                        className={styles.input}
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
                 </div>
 
                 <button className={styles.button} type="submit">LogIn</button>
