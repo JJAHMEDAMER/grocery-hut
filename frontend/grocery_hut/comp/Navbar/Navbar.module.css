@@ -18,8 +18,3 @@
     align-items: center;
     gap: 1rem;
 }
-
-.list>*:hover{
-    cursor: pointer;
-    color: rgb(244, 244, 244);
-}

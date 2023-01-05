@@ -25,6 +25,15 @@ ul {
   list-style: none;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(232, 232, 232);
+}
+
 #__next {
   width: 100vw;
 }
