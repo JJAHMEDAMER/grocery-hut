@@ -1,7 +1,7 @@
 // React 
 import { useState } from "react";
-import {RxDragHandleDots2} from "react-icons/rx"
-import {TbEdit, TbTrashX} from "react-icons/tb"
+import { RxDragHandleDots2 } from "react-icons/rx"
+import { TbEdit, TbTrashX } from "react-icons/tb"
 
 
 //comp
@@ -32,7 +32,7 @@ export const List = ({
       <div className={styles.card}>
         {appList.map((item, index) => (
           <div className={styles.list_item_card}>
-            <div><RxDragHandleDots2/></div>
+            <div><RxDragHandleDots2 /></div>
             <div key={item.id}>
               <div className={styles.section}>
                 <p className={styles.name}>
@@ -40,14 +40,12 @@ export const List = ({
                   {item.title}
                 </p>
                 <div>
-                  <img
-                    src="/pen.png"
+                  <TbEdit
                     className={styles.img}
                     alt="edit"
                     onClick={() => editButton(index)}
                   />
-                  <img
-                    src="/trash.png"
+                  <TbTrashX
                     className={styles.img}
                     alt="delete"
                     onClick={() => onClickDelete(item.id)}
