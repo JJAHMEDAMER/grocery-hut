@@ -27,13 +27,13 @@ export const List = ({
   }
 
   return (
-    <div className={styles.item}>
+    <div className={styles.list}>
       <h1 className={styles.item_number}># of Items:: {appList.length}</h1>
-      <div className={styles.card}>
+      <div className={styles.container}>
         {appList.map((item, index) => (
-          <div className={styles.list_item_card}>
-            <div><RxDragHandleDots2 /></div>
-            <div key={item.id}>
+          <div key={item.id} >
+            <div className={styles.card}>
+              <RxDragHandleDots2 className={styles.drag} />
               <div className={styles.section}>
                 <p className={styles.name}>
                   <span className={styles.index}>{index + 1}.</span>
@@ -59,8 +59,8 @@ export const List = ({
                   onChangeHandler={(input) => editValue = input}
                 />
               ) : null}
-              {!(index + 1 === appList.length) && <div className="hr-line"></div>}
             </div>
+            {!(index + 1 === appList.length) && <div className="hr-line"></div>}
           </div>
         ))}
       </div>
