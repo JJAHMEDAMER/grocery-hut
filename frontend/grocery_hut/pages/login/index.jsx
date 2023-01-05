@@ -1,4 +1,5 @@
 import styles from "./login.module.css"
+import Link from "next/link"
 
 const login = () => {
     return <div className={styles.form_container}>
@@ -13,6 +14,7 @@ const login = () => {
             </div>
 
             <button className={styles.button} type="submit">LogIn</button>
+            <p className={styles.no_account}>Don't Have an account? <Link href="/signup">SignUp</Link></p>
         </form>
     </div>
 }

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import styles from "./signup.module.css"
 
 const signup = () => {
@@ -16,6 +17,7 @@ const signup = () => {
                 <input className={styles.input} type="password" name="password" placeholder="Enter your password" />
             </div>
             <button className={styles.button} type="submit">Sign Up</button>
+            <p className={styles.no_account}>Already have an account? <Link href="/login">Login</Link></p>
         </form>
     </div>
 }

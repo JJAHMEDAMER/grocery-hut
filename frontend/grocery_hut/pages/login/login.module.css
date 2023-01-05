@@ -61,6 +61,15 @@
     align-self: flex-start;
 }
 
+.no_account {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.no_account>a {
+    color: var(--accent-color);
+}
+
 @media screen and (max-width: 800px) {
     .form{
         padding: 2rem;
