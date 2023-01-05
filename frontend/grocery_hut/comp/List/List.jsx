@@ -60,7 +60,7 @@ export const List = ({
                 />
               ) : null}
             </div>
-            {!(index + 1 === appList.length) && <div className="hr-line"></div>}
+            {!(index + 1 === appList.length) && <div className={styles.hr_line}></div>}
           </div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 .container {
     width: 100%;
     background-color: var(--card-bg);
-    padding: 1rem 2rem;
+    padding: 1rem 2rem 1rem 1rem;
     border-radius: 1rem;
     color: var(--white);
 }
@@ -20,10 +20,16 @@
     padding: 0.2rem 0.08rem;
     box-sizing: content-box;
     border-radius: 5px;
+    opacity: 0;
+    transition: var(--fade-in);
 }
 
 .drag:hover {
     background-color: black;
+}
+
+.card:hover>.drag {
+    opacity: 1;
 }
 
 .item_number {
@@ -56,8 +62,16 @@
     padding: 0.2rem;
     box-sizing: content-box;
     border-radius: 5px;
+    transition: var(--fade-in);
 }
 
 .img:hover {
     background-color: black;
 }
+
+.hr_line {
+    width: 90%;
+    height: 1px;
+    background-color: rgba(87, 87, 87, 0.456);
+    margin: 0.3rem 0 0.3rem 1.5rem;
+  }
