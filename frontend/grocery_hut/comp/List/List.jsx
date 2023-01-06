@@ -41,7 +41,7 @@ export const List = ({
     console.log({ enterDrag: index })
     itemDragOver.current = index
     if (index != itemDrag.current) {
-      
+
     }
   }
 
@@ -60,14 +60,15 @@ export const List = ({
       <div className={styles.container}>
         {list.map((item, index) => (
           <div key={item.id} >
-            <div
-              className={styles.card}
-              draggable
-              onDragStart={(e) => startDrag(e, index)}
-              onDragEnter={e => enterDrag(e, index)}
-              onDragEnd={e => endDrag(e, index)}
-            >
-              <RxDragHandleDots2 className={styles.drag} />
+            <div className={styles.card}>
+              <div className={styles.drag}
+                draggable
+                onDragStart={(e) => startDrag(e, index)}
+                onDragEnter={e => enterDrag(e, index)}
+                onDragEnd={e => endDrag(e, index)}
+              >
+                <RxDragHandleDots2 />
+              </div>
               <div className={styles.section}>
                 <p className={styles.name}>
                   <span className={styles.index}>{index + 1}.</span>
