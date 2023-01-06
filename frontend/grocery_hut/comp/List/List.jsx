@@ -39,20 +39,16 @@ export const List = ({
   }
 
   function enterDrag(e, index) {
-    console.log({ enterDrag: index })
+    // console.log({ enterDrag: index })
     itemDragOver.current = index
     setHoverIndex(index)
-  }
-
-  function hoverOver(index) {
-    
   }
 
   function endDrag(e, index) {
     // console.log({ endDrag: index })
     if (itemDrag.current != itemDragOver.current) {
       // console.log({ itemDrag: itemDrag.current, itemDragOver: itemDragOver.current })
-      let newList = [...list.move(itemDrag.current, itemDragOver.current)] // [{ id: 1, title: "njj" }]
+      let newList = [...list.move(itemDrag.current, itemDragOver.current)] 
       setList(newList)
     }
     setHoverIndex(-1)
@@ -99,8 +95,8 @@ export const List = ({
                 />
               ) : null}
             </div>
-            {(index === hoverIndex) ? <div className={styles.drag_line}></div>: null}
-            {!(index + 1 === list.length) ? <div className={styles.hr_line}></div>: null}
+            <div className={(index === hoverIndex) ? styles.opacity : styles.drag_line}></div>
+            {!(index + 1 === list.length) ? <div className={styles.hr_line}></div> : null}
           </div>
         ))}
       </div>
