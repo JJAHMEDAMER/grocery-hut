@@ -14,6 +14,7 @@ export const List = ({
 }) => {
   let editValue
   const [editIndex, setEditIndex] = useState(-1);
+  const [hoverIndex, setHoverIndex] = useState(-1);
   const [list, setList] = useState(appList);
 
   const itemDrag = useRef()
@@ -33,25 +34,28 @@ export const List = ({
   };
 
   function startDrag(e, index) {
-    console.log({ startDrag: index })
+    // console.log({ startDrag: index })
     itemDrag.current = index
   }
 
   function enterDrag(e, index) {
     console.log({ enterDrag: index })
     itemDragOver.current = index
-    if (index != itemDrag.current) {
+    setHoverIndex(index)
+  }
 
-    }
+  function hoverOver(index) {
+    
   }
 
   function endDrag(e, index) {
-    console.log({ endDrag: index })
+    // console.log({ endDrag: index })
     if (itemDrag.current != itemDragOver.current) {
       // console.log({ itemDrag: itemDrag.current, itemDragOver: itemDragOver.current })
       let newList = [...list.move(itemDrag.current, itemDragOver.current)] // [{ id: 1, title: "njj" }]
       setList(newList)
     }
+    setHoverIndex(-1)
   }
 
   return (
@@ -95,7 +99,8 @@ export const List = ({
                 />
               ) : null}
             </div>
-            {!(index + 1 === list.length) && <div className={styles.hr_line}></div>}
+            {(index === hoverIndex) ? <div className={styles.drag_line}></div>: null}
+            {!(index + 1 === list.length) ? <div className={styles.hr_line}></div>: null}
           </div>
         ))}
       </div>

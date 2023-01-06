@@ -84,3 +84,11 @@
     background-color: rgba(87, 87, 87, 0.456);
     margin: 0.3rem 0 0.3rem 1.5rem;
 }
+
+.drag_line {
+    width: 90%;
+    height: 5px;
+    background-color: var(--accent-color);
+    margin: 0.3rem 0 0 1.5rem;
+    border-radius: 1000px;
+}
