@@ -31,6 +31,19 @@ async function put(id, editValue) {
   get();
 }
 
+async function updateListOrder(id, newTitle){
+  await fetch(`http://127.0.0.1:8000/api/grocery/${id}/`, {
+    method: "Put",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title: newTitle,
+    }),
+  });
+  get();
+}
+
 async function delete_rest(id) {
   await fetch(`http://127.0.0.1:8000/api/grocery/${id}/`, {
     method: "Delete",
@@ -41,4 +54,4 @@ async function delete_rest(id) {
   get();
 }
 
-export { get, put, post, delete_rest };
+export { get, put, post, delete_rest, updateListOrder };

@@ -7,6 +7,9 @@ import { TbEdit, TbTrashX } from "react-icons/tb"
 import { AddItemBar } from "../";
 import styles from "./List.module.css";
 
+//utils
+import { updateListOrder } from "../../utils";
+
 export const List = ({
   appList,
   setAppList,
@@ -50,6 +53,12 @@ export const List = ({
       // console.log({ itemDrag: itemDrag.current, itemDragOver: itemDragOver.current })
       let newList = [...appList.move(itemDrag.current, itemDragOver.current)]
       setAppList(newList)
+
+      const tempId1 = appList[itemDrag.current]['title']
+      const tempId2 = appList[itemDragOver.current]['title']
+
+      updateListOrder(appList[itemDragOver.current]['id'], tempId1)
+      updateListOrder(appList[itemDrag.current]['id'], tempId2)
     }
     setHoverIndex(-1)
   }
