@@ -49,7 +49,7 @@ export const List = ({
     console.log({ endDrag: index })
     if (itemDrag.current != itemDragOver.current) {
       // console.log({ itemDrag: itemDrag.current, itemDragOver: itemDragOver.current })
-      let newList = [...list.move(itemDragOver.current, itemDrag.current)] // [{ id: 1, title: "njj" }]
+      let newList = [...list.move(itemDrag.current, itemDragOver.current)] // [{ id: 1, title: "njj" }]
       setList(newList)
     }
   }
