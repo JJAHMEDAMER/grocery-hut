@@ -4,6 +4,10 @@ import styles from './home.module.css'
 // Comp
 import { AddItemBar, List, Navbar } from "../../comp";
 
+//utils
+import { get, post, put, delete_rest } from "../../utils"
+
+
 // function getLocalStorage() {
 //   const data = localStorage.getItem("appList");
 //   if (data) {
@@ -14,11 +18,12 @@ import { AddItemBar, List, Navbar } from "../../comp";
 // }
 
 function App() {
+  let inputValue;
+
   const [appList, setAppList] = useState([]);
 
   async function getData() {
-    const res = await fetch('http://127.0.0.1:8000/api/grocery/')
-    const resJson = await res.json()
+    const resJson = await get()
     setAppList(resJson)
   }
 
@@ -26,41 +31,19 @@ function App() {
     getData()
   }, []);
 
-  let inputValue;
 
-  async function add() {
-    await fetch('http://127.0.0.1:8000/api/grocery/', {
-      method: 'Post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: inputValue
-      })
-    })
+  async function add(inputValue) {
+    await post(inputValue)
     getData();
   }
 
   async function edit(id, editValue) {
-    await fetch(`http://127.0.0.1:8000/api/grocery/${id}/`, {
-      method: 'Put',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: editValue
-      })
-    })
+    await put(id, editValue)
     getData();
   }
 
   async function deleteButton(id) {
-    await fetch(`http://127.0.0.1:8000/api/grocery/${id}/`, {
-      method: 'Delete',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    await delete_rest(id)
     getData();
   }
 
@@ -69,7 +52,7 @@ function App() {
       <Navbar />
       <div className={styles.app_container}>
         <div className={styles.app}>
-          <AddItemBar onClickHandler={add} onChangeHandler={(input) => inputValue = input} />
+          <AddItemBar onClickHandler={() => add(inputValue)} onChangeHandler={(input) => inputValue = input} />
           {!(appList.length === 0) ? (
             <List
               appList={appList}
