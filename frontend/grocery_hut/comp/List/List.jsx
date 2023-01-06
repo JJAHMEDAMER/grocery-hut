@@ -9,13 +9,13 @@ import styles from "./List.module.css";
 
 export const List = ({
   appList,
+  setAppList,
   onClickDelete,
-  editHandler,
+  editHandler,  
 }) => {
   let editValue
   const [editIndex, setEditIndex] = useState(-1);
   const [hoverIndex, setHoverIndex] = useState(-1);
-  const [list, setList] = useState(appList);
 
   const itemDrag = useRef()
   const itemDragOver = useRef()
@@ -48,8 +48,8 @@ export const List = ({
     // console.log({ endDrag: index })
     if (itemDrag.current != itemDragOver.current) {
       // console.log({ itemDrag: itemDrag.current, itemDragOver: itemDragOver.current })
-      let newList = [...list.move(itemDrag.current, itemDragOver.current)]
-      setList(newList)
+      let newList = [...appList.move(itemDrag.current, itemDragOver.current)]
+      setAppList(newList)
     }
     setHoverIndex(-1)
   }
@@ -58,7 +58,7 @@ export const List = ({
     <div className={styles.list}>
       <h1 className={styles.item_number}># of Items:: {appList.length}</h1>
       <div className={styles.container}>
-        {list.map((item, index) => (
+        {appList.map((item, index) => (
           <div key={item.id} >
             <div className={styles.card}
               onDragEnter={e => enterDrag(e, index)}
@@ -97,7 +97,7 @@ export const List = ({
               ) : null}
             </div>
             <div className={(index === hoverIndex) ? styles.opacity : styles.drag_line}></div>
-            {!(index + 1 === list.length) ? <div className={styles.hr_line}></div> : null}
+            {!(index + 1 === appList.length) ? <div className={styles.hr_line}></div> : null}
           </div>
         ))}
       </div>

@@ -73,6 +73,7 @@ function App() {
           {!(appList.length === 0) ? (
             <List
               appList={appList}
+              setAppList={setAppList}
               onClickDelete={deleteButton}
               editHandler={edit}
             />
