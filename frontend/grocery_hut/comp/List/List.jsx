@@ -48,7 +48,7 @@ export const List = ({
     // console.log({ endDrag: index })
     if (itemDrag.current != itemDragOver.current) {
       // console.log({ itemDrag: itemDrag.current, itemDragOver: itemDragOver.current })
-      let newList = [...list.move(itemDrag.current, itemDragOver.current)] 
+      let newList = [...list.move(itemDrag.current, itemDragOver.current)]
       setList(newList)
     }
     setHoverIndex(-1)
@@ -60,11 +60,12 @@ export const List = ({
       <div className={styles.container}>
         {list.map((item, index) => (
           <div key={item.id} >
-            <div className={styles.card}>
+            <div className={styles.card}
+              onDragEnter={e => enterDrag(e, index)}
+            >
               <div className={styles.drag}
                 draggable
                 onDragStart={(e) => startDrag(e, index)}
-                onDragEnter={e => enterDrag(e, index)}
                 onDragEnd={e => endDrag(e, index)}
               >
                 <RxDragHandleDots2 />
