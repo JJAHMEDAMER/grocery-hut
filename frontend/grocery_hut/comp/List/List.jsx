@@ -1,13 +1,10 @@
 // React 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { RxDragHandleDots2 } from "react-icons/rx"
 import { TbEdit, TbTrashX } from "react-icons/tb"
 
-
-//comp
+//comp & styles
 import { AddItemBar } from "../";
-
-// Styles
 import styles from "./List.module.css";
 
 export const List = ({
@@ -17,6 +14,10 @@ export const List = ({
 }) => {
   let editValue
   const [editIndex, setEditIndex] = useState(-1);
+  const [list, setList] = useState(appList);
+
+  const itemDrag = useRef()
+  const itemDragOver = useRef()
 
   function editButton(itemIndex) {
     if (itemIndex === editIndex) {
@@ -26,13 +27,46 @@ export const List = ({
     }
   }
 
+  Array.prototype.move = function (from, to) {
+    this.splice(to, 0, this.splice(from, 1)[0]);
+    return this;
+  };
+
+  function startDrag(e, index) {
+    console.log({ startDrag: index })
+    itemDrag.current = index
+  }
+
+  function enterDrag(e, index) {
+    console.log({ enterDrag: index })
+    itemDragOver.current = index
+    if (index != itemDrag.current) {
+      
+    }
+  }
+
+  function endDrag(e, index) {
+    console.log({ endDrag: index })
+    if (itemDrag.current != itemDragOver.current) {
+      // console.log({ itemDrag: itemDrag.current, itemDragOver: itemDragOver.current })
+      let newList = [...list.move(itemDragOver.current, itemDrag.current)] // [{ id: 1, title: "njj" }]
+      setList(newList)
+    }
+  }
+
   return (
     <div className={styles.list}>
       <h1 className={styles.item_number}># of Items:: {appList.length}</h1>
       <div className={styles.container}>
-        {appList.map((item, index) => (
+        {list.map((item, index) => (
           <div key={item.id} >
-            <div className={styles.card}>
+            <div
+              className={styles.card}
+              draggable
+              onDragStart={(e) => startDrag(e, index)}
+              onDragEnter={e => enterDrag(e, index)}
+              onDragEnd={e => endDrag(e, index)}
+            >
               <RxDragHandleDots2 className={styles.drag} />
               <div className={styles.section}>
                 <p className={styles.name}>
@@ -60,7 +94,7 @@ export const List = ({
                 />
               ) : null}
             </div>
-            {!(index + 1 === appList.length) && <div className={styles.hr_line}></div>}
+            {!(index + 1 === list.length) && <div className={styles.hr_line}></div>}
           </div>
         ))}
       </div>
