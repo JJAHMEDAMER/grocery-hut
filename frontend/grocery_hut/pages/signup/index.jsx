@@ -16,7 +16,7 @@ const signup = () => {
         password
     })
 
-    return <div>
+    return <div className="page_layout">
         <Navbar />
         <div className={styles.form_container}>
             <form className={styles.form}>

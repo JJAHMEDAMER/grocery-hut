@@ -48,7 +48,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="page_layout">
       <Navbar />
       <div className={styles.app_container}>
         <div className={styles.app}>
